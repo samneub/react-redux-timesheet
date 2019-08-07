@@ -5,8 +5,31 @@ import EmployeeRow from './EmployeeRow';
 
 class EmployeeTable extends React.Component {
   render() {
-    return null;
+    const { employees } = this.props;
+    return (
+      <Table bordered striped>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map(employee => (
+            <EmployeeRow employee={employee} key={employee._id} />
+          ))}
+        </tbody>
+      </Table>
+    );
   }
 }
+
+EmployeeTable.propTypes = {
+  employees: PropTypes.array
+};
+
+EmployeeTable.defaultProps = {
+  employees: []
+};
 
 export default EmployeeTable;
